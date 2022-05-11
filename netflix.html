@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NETFLIX CLONE</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    
+</head>
+<body>
+    <script src="https://kit.fontawesome.com/add5922cc1.js" crossorigin="anonymous"></script>
+    <header>
+        <div class="container">
+            <h2 class="logo">NETFLIX</h2>
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#series">Series</a>
+                <a href="#filmes">Filmes</a>
+                <a href="#documentarios">Documentarios</a>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main>
+        <div class="filme-principal">
+            <div class="container">
+                <h3 class="witchertitulo">THE WITCHER</h3>
+                <p class="descricao">A saga do bruxo Geralt de Rivia contada agora em live action</p>
+                <a href="https://www.youtube.com/watch?v=tjujvMkqWe4">
+                <button role="button" class="button">
+                    <i class="fas fa-play"></i>
+                    ASSISTIR AGORA
+                </button>
+                </a>
+                <button role="button" class="button">
+                    <i class="fas fa-info-circle"></i>
+                    MAIS INFORMAÇÕES
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <div class="letreiro">FILMES</div>
+    <div class="container-scroll">
+        <div id="filmes">
+            <button class="btn-scroll" id="left-scroll" onclick="scrollHorizontally(1)"><i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="btn-scroll" id="right-scroll" onscroll="scrollHorizontally(-1)"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="container-filmes">
+                <div class="banner-filme"><img src="src/corra.jpg" alt=""></div>
+                <div class="banner-filme"><img src="src/hush.jpg" alt=""></div>
+                <div class="banner-filme"><img src="src/iGZX91hIqM9Uu0KGhd4MUaJ0Rtm.jpg" alt=""></div>
+                <div class="banner-filme"><img src="src/inseption.jpg" alt=""></div>
+                <div class="banner-filme"><img src="src/corra.jpg" alt=""></div>
+                <div class="banner-filme"><img src="src/interstellar.jpg" alt=""></div>
+                <div class="banner-filme"><img src="src/pulp.jpg" alt=""></div>
+                <div class="banner-filme"><img src="src/ryam.jpg" alt=""></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let posicaoatual = 0;
+        let quantidadescroll = 320;
+
+        const cFilmes = document.querySelector(".container-filmes");
+        const cDfilmes = document.querySelector(".container-scroll");
+        const botaoesquerda = document.querySelector("#left-scroll")
+        const botaodireita = document.querySelector("#right-scroll")
+
+
+        let maxScroll = -cFilmes.offsetWidth + cDfilmes.offsetWidth;
+
+        function scrollHorizontally (val){
+            posicaoatual  += (val * quantidadescroll);
+
+            if(posicaoatual>=0){
+                posicaoatual = 0;
+                botaoesquerda.style.opacity = 0;
+            }
+            else{
+                botaoesquerda.style.opacity = 100;
+            }
+
+            if(posicaoatual<= maxScroll){
+                posicaoatual=maxScroll          
+                botaodireita.style.opacity = 0;      
+            }
+            else{
+                botaodireita.style.opacity = 100;
+            }
+
+            cFilmes.style.left = posicaoatual + "px";
+            
+
+        }
+
+    </script>
+
+</body>
+</html>
